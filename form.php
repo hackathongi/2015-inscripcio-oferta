@@ -8,13 +8,18 @@ if(isset($_POST["submit"])) {
 	 $job_id = $_POST["job_id"];
 	
 	$uploaddir = dirname(__FILE__);
+	
+	if (!file_exists($uploaddir . '\\' . $job_id) {
+    	mkdir($uploaddir . '\\' . $job_id, 0777, true);
+	}
+	
+	if (!file_exists($uploaddir . '\\' . $job_id . '\\' . $user_id) {
+    	mkdir($uploaddir . '\\' . $job_id . '\\' . $user_id, 0777, true);
+	}
+	
 	$uploadfile = $uploaddir . '\\' . $job_id . '\\' . $user_id . '\\' . basename($_FILES['userfile']['name']);
 
-	echo "Abans";
 	if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-		//extract data from the post
-
-	echo "Despres";
 		//set POST variables
 		$url = 'https://api.wallyjobs.com/applications';
 		$fields = array(
@@ -47,7 +52,7 @@ if(isset($_POST["submit"])) {
 
 	    header('Location: https://mutualfriends.wallyjobs.com/?id_job='.$job_id.'&user_id='.$user_id);
 	} else {
-	    header('Location: index.html');
+	    header('Location: index.php');
 	}
 }
 
