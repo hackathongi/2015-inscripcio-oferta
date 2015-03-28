@@ -2,17 +2,19 @@
 $uploadOk = 1;
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
+
+	 $description = $_POST["description"];
+	 $user_id = $_POST["user_id"];
+	 $job_id = $_POST["job_id"];
 	
 	$uploaddir = dirname(__FILE__);
-	$uploadfile = $uploaddir . '\\' . basename($_FILES['userfile']['name']);
+	$uploadfile = $uploaddir . '\\' . $job_id . '\\' . $user_id . '\\' . basename($_FILES['userfile']['name']);
 
+	echo "Abans";
 	if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 		//extract data from the post
 
-         $description = $_POST["description"];
-         $user_id = $_POST["user_id"];
-         $job_id = $_POST["job_id"];
-
+	echo "Despres";
 		//set POST variables
 		$url = 'https://api.wallyjobs.com/applications';
 		$fields = array(
