@@ -15,6 +15,18 @@
     <link href="css/hackajobs-stylesheet.css" rel="stylesheet">
     <link href="css/hackajobs-stylesheet.min.css" rel="stylesheet">
 
+    <style type="text/css">
+      .error {
+        <?php if (isset($_GET["e"])) {
+            echo 'display: block;';
+            echo 'color: red;';
+          } else {
+            echo 'display: none;';
+          }
+          ?>
+      }
+    </style>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,6 +43,7 @@
           $url_fb = "https://apisocial.wallyjobs.com/login/facebook?urlOK=".urlencode("https://applicant.wallyjobs.com/");
           ?>
 
+          <div class="error">S'han d'emplenar tots els camps</div>
           <div class="offer-apply" ng-hide="user_id.length">
             <a class="btn btn-primary btn-lg" href="<?php echo $url_fb ?>">Apply</a>
           </div>
