@@ -7,7 +7,7 @@ if(isset($_POST["submit"])) {
 	 $user_id = $_POST["user_id"];
 	 $job_id = $_POST["job_id"];
 
-	 if (isset($description) && basename($_FILES['userfile']['name']) <> '') {
+	 if (isset($description) && basename($_FILES['userfile']['name']) <> '' && isset($user_id) && isset($job_id)) {
 	
 		$uploaddir = dirname(__FILE__);
 		

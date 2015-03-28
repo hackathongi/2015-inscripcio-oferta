@@ -17,7 +17,19 @@
 
     <style type="text/css">
       .error {
-        <?php if (isset($_GET["e"])) {
+        <?php 
+          if (isset($_GET["e"]) && isset($_GET["user_id"])) {
+            echo 'display: block;';
+            echo 'color: red;';
+          } else {
+            echo 'display: none;';
+          }
+          ?>
+      }
+
+      .fberror {
+        <?php 
+          if (isset($_GET["user_id"])) {
             echo 'display: block;';
             echo 'color: red;';
           } else {
@@ -57,11 +69,12 @@
             $url_fb = "https://apisocial.wallyjobs.com/login/facebook?urlOK=".urlencode("https://applicant.wallyjobs.com/");
           ?>
 
+          <div class="fberror">Abans has de registrar-te</div>
           <div class="error">S'han d'emplenar tots els camps</div>
           <div class="offer-apply" ng-hide="user_id.length">
-            <a class="btn btn-primary btn-lg" href="<?php echo $url_fb ?>">Apply</a>
+            <a class="btn btn-primary btn-lg" href="<?php echo $url_fb ?>">Registrar con Facebook</a>
           </div>
-
+          <hr>
           <form enctype="multipart/form-data" method="post" action="form.php" data-toggle="validator" role="form">
             <div class="form-group apply-offer-presentation">
               <label class="control-label" for="apply-offer-presentation">Carta de presentació</label>
