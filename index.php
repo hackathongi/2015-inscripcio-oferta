@@ -26,7 +26,7 @@
         <div class="col-xs">
           <h2>{{job.title}}</h2>
           <?php
-          $url_fb = "https://apisocial.wallyjobs.com/login/facebook?urlOK=".urlencode("http://localhost/2015-inscripcio2/dist/");
+          $url_fb = "https://apisocial.wallyjobs.com/login/facebook?urlOK=".urlencode("https://applicant.wallyjobs.com/");
           ?>
 
           <div class="offer-apply">
