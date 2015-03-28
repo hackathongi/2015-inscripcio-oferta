@@ -8,10 +8,10 @@
     <title>Registration</title>
 
     <!-- Angular JS -->
-    <script src="../2015-landing-oferta/js/angular.min.js"></script>
+    <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
     <!-- Bootstrap -->
-    <link href="../2015-landing-oferta/css/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,8 +50,8 @@
       </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../2015-landing-oferta/js/jquery-1.11.2.min.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../2015-landing-oferta/js/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
   </body>
 </html>
