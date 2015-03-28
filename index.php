@@ -18,7 +18,7 @@
     <style type="text/css">
       .error {
         <?php 
-          if (isset($_GET["e"]) && isset($_GET["user_id"])) {
+          if (isset($_GET["e"]) && isset($_GET["id"])) {
             echo 'display: block;';
             echo 'color: red;';
           } else {
@@ -29,7 +29,7 @@
 
       .fberror {
         <?php 
-          if (isset($_GET["user_id"])) {
+          if (!isset($_GET["id"])) {
             echo 'display: block;';
             echo 'color: red;';
           } else {
