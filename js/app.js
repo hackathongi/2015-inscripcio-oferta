@@ -1,5 +1,12 @@
 
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 var myApp = angular.module('hackathonApp',[]);
 
 myApp.controller('InscriptionController', ['$scope', '$http', '$location', function($scope, $http, $location) {
@@ -13,27 +20,14 @@ myApp.controller('InscriptionController', ['$scope', '$http', '$location', funct
 	var url = $location.absUrl();
 	var token = url.split('/')[url.split('/').length-1];
 
-	token = "1";//integracio
+	token = getParameterByName('job_id');
+	$scope.user_id = getParameterByName('id');
 
-  	$http.get("http://apic.wallyjobs.com/jobs/" + token)
+  	$http.get("https://api.wallyjobs.com/jobs/" + token)
            .success(function(response) {
            	$scope.job = response;
         });
 
-}]);
-
-myApp.controller('RecommendController', ['$scope', '$http', function($scope, $http) {
-	$scope.job = {};
-
-	var url = $location.absUrl();
-	var token = url.split('/')[url.split('/').length-1];
-
-	token = "1";//integracio
-
-  	$http.get("http://apic.wallyjobs.com/jobs/" + token)
-           .success(function(response) {
-           	$scope.job = response;
-        });
 }]);
 
 var register = function(form) {

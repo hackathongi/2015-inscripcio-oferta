@@ -12,6 +12,8 @@
     <script src="js/app.js"></script>
     <!-- Bootstrap -->
     <link href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/hackajobs-stylesheet.css" rel="stylesheet">
+    <link href="css/hackajobs-stylesheet.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +31,7 @@
           $url_fb = "https://apisocial.wallyjobs.com/login/facebook?urlOK=".urlencode("https://applicant.wallyjobs.com/");
           ?>
 
-          <div class="offer-apply">
+          <div class="offer-apply" ng-hide="user_id.length">
             <a class="btn btn-primary btn-lg" href="<?php echo $url_fb ?>">Apply</a>
           </div>
 
@@ -38,7 +40,7 @@
               <textarea class="form-control" rows="5" id="description" name="description" placeholder="Desar carta de presentació"></textarea>
             <br>
             Currículum vitae:<br>
-            <input type="hidden" value="{{job.owner.id}}" id="user_id" name="user_id" />
+            <input type="hidden" value="{{user_id}}" id="user_id" name="user_id" />
             <input type="hidden" value="{{job.id}}" id="job_id" name="job_id" />
             <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
             <input type="file" id="userfile" name="userfile" accept="application/pdf">
