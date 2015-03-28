@@ -22,15 +22,34 @@
   </head>
   <body>
 
+<?php
+/*$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}*/
+?>
+
     <div class="container" ng-app="hackathonApp" ng-controller="InscriptionController">
       <div class="row">
         <div class="col-xs">
+          <h2>{{job.title}}</h2>
           <form  onsubmit="register(this)" method="post" action="URLAPI" data-toggle="validator" role="form">
             <br>
               <textarea class="form-control" rows="5" id="cp" placeholder="Desar carta de presentació"></textarea>
             <br>
             Currículum vitae:<br>
-            <input type="file" id="myFile" accept="application/pdf">
+            <input type="file" id="fileToUpload" name="fileToUpload" accept="application/pdf">
             <br>
             <br>
             <input type="submit" value="Inscriure'm">
