@@ -21,38 +21,30 @@
     <![endif]-->
   </head>
   <body>
-
-<?php
-/*$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-}*/
-?>
-
     <div class="container" ng-app="hackathonApp" ng-controller="InscriptionController">
       <div class="row">
         <div class="col-xs">
           <h2>{{job.title}}</h2>
-          <form  onsubmit="register(this)" method="post" action="URLAPI" data-toggle="validator" role="form">
+          <?php
+          $url_fb = "https://apisocial.wallyjobs.com/login/facebook?urlOK=".urlencode("http://localhost/2015-inscripcio2/dist/");
+          ?>
+
+          <div class="offer-apply">
+            <a class="btn btn-primary btn-lg" href="<?php echo $url_fb ?>">Apply</a>
+          </div>
+
+          <form enctype="multipart/form-data" method="post" action="form.php" data-toggle="validator" role="form">
             <br>
-              <textarea class="form-control" rows="5" id="cp" placeholder="Desar carta de presentació"></textarea>
+              <textarea class="form-control" rows="5" id="description" name="description" placeholder="Desar carta de presentació"></textarea>
             <br>
             Currículum vitae:<br>
-            <input type="file" id="fileToUpload" name="fileToUpload" accept="application/pdf">
+            <input type="hidden" value="{{job.owner.id}}" id="user_id" name="user_id" />
+            <input type="hidden" value="{{job.id}}" id="job_id" name="job_id" />
+            <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+            <input type="file" id="userfile" name="userfile" accept="application/pdf">
             <br>
             <br>
-            <input type="submit" value="Inscriure'm">
+            <input type="submit" name="submit" id="submit" value="Inscriure'm">
           </form>
         </div>
       </div>
